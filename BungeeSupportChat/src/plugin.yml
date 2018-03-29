@@ -1,0 +1,8 @@
+name: BungeeSupportChat
+version: 1.0
+author: Dakir
+main: de.dakir.bungeesupportchat.Main
+commands:
+  support:
+  sup:
+  sc:
