@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import de.dakir.bungeesupportchat.commands.Support;
 import de.dakir.bungeesupportchat.events.ChatEvent;
 import de.dakir.bungeesupportchat.events.PlayerDisconnectEvent;
-import de.dakir.bungeesupportchat.events.TabCompleteEvent;
 import de.dakir.bungeesupportchat.utils.Data;
 import de.dakir.bungeesupportchat.utils.HexxAPI;
 import de.dakir.bungeesupportchat.utils.Strings;
@@ -34,7 +33,7 @@ public class PluginManager {
 		Plugin pl = Main.instance;
 		pm.registerListener(pl, new ChatEvent());
 		pm.registerListener(pl, new PlayerDisconnectEvent());
-		pm.registerListener(pl, new TabCompleteEvent());
+		//pm.registerListener(pl, new TabCompleteEvent());
 	}
 	
 	public static void registerCommands() {
