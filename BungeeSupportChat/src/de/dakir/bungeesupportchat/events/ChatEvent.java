@@ -33,7 +33,7 @@ public class ChatEvent implements Listener{
         	String[] args = e.getMessage().split(" ");
         	String msg = "";
         	for(int i = 0; i < args.length; i++){
-        		msg = msg + " §b" + args[i];
+        		msg = msg + " " + Strings.chatColor + args[i];
         	}
         	
         	p.sendMessage(new TextComponent(Strings.prefix + namecolor + p.getName() + " §8\u00BB§b" + msg));
