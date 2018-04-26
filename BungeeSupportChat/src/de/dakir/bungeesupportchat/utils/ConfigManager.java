@@ -123,8 +123,8 @@ public class ConfigManager {
             
             //Updatechecker
 			try {
-				double version = Double.parseDouble(Main.instance.getDescription().getVersion());
-				if(config.getDouble("configversion") < version){
+				String version = Main.instance.getDescription().getVersion();
+				if(!(config.getString("configversion").equalsIgnoreCase(version))){
 					System.out.println(Strings.cprefix + "Your config file is outdated and will be updated automatically to version " + version);
 					loadConfigBackup();
 					System.out.println(Strings.cprefix + "Config backup has been taken");
@@ -142,7 +142,7 @@ public class ConfigManager {
 	public static void loadConfigBackup(){
 		try {
 			Configuration config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(Main.instance.getDataFolder(), "config.yml"));
-			ConfigBackup.configversion = Double.parseDouble(Main.instance.getDescription().getVersion());
+			ConfigBackup.configversion = Main.instance.getDescription().getVersion();
 			
 			if(config.contains("prefix")) ConfigBackup.prefix = config.getString("prefix");
 			if(config.contains("enableMySQL")) ConfigBackup.enableMySQL = config.getBoolean("enableMySQL");
@@ -219,7 +219,7 @@ public class ConfigManager {
         
         loadInputBuffer();
         
-        setDouble("configversion", ConfigBackup.configversion);
+        setVersion("configversion", ConfigBackup.configversion);
 		
         setString("prefix", ConfigBackup.prefix);
         setBoolean("enableMySQL", ConfigBackup.enableMySQL);
@@ -324,6 +324,15 @@ public class ConfigManager {
 			e.printStackTrace();
 		}
         
+	}
+	
+	public static void setVersion(String string, String value) {
+		for(int i = 0; i < lines.length; i++) {
+    		if(lines[i].startsWith(string + ":")) {
+    			lines[i] = string + ": " + value;
+    			break;
+    		}
+    	}
 	}
 	
 	public static void setString(String string, String value) {

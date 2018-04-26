@@ -2,7 +2,7 @@ package de.dakir.bungeesupportchat.utils;
 
 public class ConfigBackup {
 	
-	public static double configversion;
+	public static String configversion;
 	
 	public static String prefix = "&8[&9Support&8] &b";
 	public static boolean enableMySQL = false;

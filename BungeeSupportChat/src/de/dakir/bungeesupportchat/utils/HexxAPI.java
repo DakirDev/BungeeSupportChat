@@ -77,12 +77,14 @@ public class HexxAPI {
 			}
 			Data.inSupport.put(supporter.getUniqueId(), spieler.getUniqueId());
 			
-			if((!(MySQLData.isPlayerExists(supporter.getUniqueId().toString()))) && (supporter.hasPermission("bungeesupportchat.*") || supporter.hasPermission("bungeesupportchat.use") || supporter.hasPermission("bungeesupportchat.open"))){
-				MySQLData.createPlayer(supporter.getUniqueId());
-				MySQLData.addSupport(supporter.getUniqueId());
-			}else{
-				MySQLData.addSupport(supporter.getUniqueId());
-				MySQLData.updateName(supporter.getUniqueId());
+			if(Data.enableMySQL) {
+				if((!(MySQLData.isPlayerExists(supporter.getUniqueId().toString()))) && (supporter.hasPermission("bungeesupportchat.*") || supporter.hasPermission("bungeesupportchat.use") || supporter.hasPermission("bungeesupportchat.open"))){
+					MySQLData.createPlayer(supporter.getUniqueId());
+					MySQLData.addSupport(supporter.getUniqueId());
+				}else{
+					MySQLData.addSupport(supporter.getUniqueId());
+					MySQLData.updateName(supporter.getUniqueId());
+				}
 			}
 			
 			spieler.sendMessage(new TextComponent(Strings.prefix + Strings.openSupportChat));
