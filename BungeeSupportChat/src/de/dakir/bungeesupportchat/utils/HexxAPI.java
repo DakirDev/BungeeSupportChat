@@ -11,7 +11,7 @@ public class HexxAPI {
 	
 	public static void sendSupportMessage(String message){
 		for(ProxiedPlayer p : BungeeCord.getInstance().getPlayers()){
-			if(p.hasPermission("bungeesupportchat.*") || p.hasPermission("bungeesupportchat.use") || p.hasPermission("bungeesupportchat.open")){
+			if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.use") || p.hasPermission("supportchat.open")){
 				p.sendMessage(new TextComponent(Strings.prefix + message));
 				p.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Strings.prefix + message));
 			}
@@ -21,7 +21,7 @@ public class HexxAPI {
 	public static boolean isSupporterOnline(){
 		boolean online = false;
 		for(ProxiedPlayer p : BungeeCord.getInstance().getPlayers()){
-			if(p.hasPermission("bungeesupportchat.*") || p.hasPermission("bungeesupportchat.use") || p.hasPermission("bungeesupportchat.open")){
+			if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.use") || p.hasPermission("supportchat.open")){
 				online = true;
 			}
 		}
@@ -78,7 +78,7 @@ public class HexxAPI {
 			Data.inSupport.put(supporter.getUniqueId(), spieler.getUniqueId());
 			
 			if(Data.enableMySQL) {
-				if((!(MySQLData.isPlayerExists(supporter.getUniqueId().toString()))) && (supporter.hasPermission("bungeesupportchat.*") || supporter.hasPermission("bungeesupportchat.use") || supporter.hasPermission("bungeesupportchat.open"))){
+				if((!(MySQLData.isPlayerExists(supporter.getUniqueId().toString()))) && (supporter.hasPermission("supportchat.*") || supporter.hasPermission("supportchat.use") || supporter.hasPermission("supportchat.open"))){
 					MySQLData.createPlayer(supporter.getUniqueId());
 					MySQLData.addSupport(supporter.getUniqueId());
 				}else{
