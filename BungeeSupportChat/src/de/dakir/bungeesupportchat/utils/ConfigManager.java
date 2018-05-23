@@ -51,7 +51,7 @@ public class ConfigManager {
         if(!file.exists()){
             try(InputStream in = Main.instance.getResourceAsStream("config.yml")) {
                 Files.copy(in, file.toPath());
-                System.out.println(Strings.cprefix + "Die Datei 'config.yml' wurde erstellt.");
+                System.out.println(Strings.cprefix + "The file 'config.yml' has been created.");
             } catch(IOException e1) {
                 e1.printStackTrace();
             }

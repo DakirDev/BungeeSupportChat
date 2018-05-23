@@ -18,7 +18,7 @@ public class MySQLFile {
 	    if(!file.exists()){
 	        try(InputStream in = Main.instance.getResourceAsStream("mysql.yml")) {
 	            Files.copy(in, file.toPath());
-	            System.out.println(Strings.cprefix + "Die Datei 'mysql.yml' wurde erstellt.");
+	            System.out.println(Strings.cprefix + "The file 'mysql.yml' has been created.");
 	        } catch(IOException e1) {
 	            e1.printStackTrace();
 	        }
