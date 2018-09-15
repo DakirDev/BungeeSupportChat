@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 import de.dakir.bungeesupportchat.Main;
@@ -67,6 +68,7 @@ public class ConfigManager {
             Strings.chatColor = ChatColor.translateAlternateColorCodes('&', config.getString("chatColor"));
             Data.enableQueueNotification = config.getBoolean("enableQueueNotification");
             Data.queueNotificationInterval = config.getInt("queueNotificationInterval");
+            Data.enableTabComplete = config.getBoolean("enableTabComplete");
             
             Strings.reload = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("reload")));
             Strings.noPermission = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("noPermission")));
@@ -151,6 +153,7 @@ public class ConfigManager {
 			if(config.contains("chatColor")) ConfigBackup.chatColor = config.getString("chatColor");
 			if(config.contains("enableQueueNotification")) ConfigBackup.enableQueueNotification = config.getBoolean("enableQueueNotification");
 			if(config.contains("queueNotificationInterval")) ConfigBackup.queueNotificationInterval = config.getInt("queueNotificationInterval");
+			if(config.contains("enableTabComplete")) ConfigBackup.enableTabComplete = config.getBoolean("enableTabComplete");
             
 			if(config.contains("reload")) ConfigBackup.reload = config.getString("reload");
 			if(config.contains("noPermission")) ConfigBackup.noPermission = config.getString("noPermission");
@@ -228,6 +231,7 @@ public class ConfigManager {
 		setString("chatColor", ConfigBackup.chatColor);
 		setBoolean("enableQueueNotification", ConfigBackup.enableQueueNotification);
 		setInt("queueNotificationInterval", ConfigBackup.queueNotificationInterval);
+		setBoolean("enableTabComplete", ConfigBackup.enableTabComplete);
 		
 		setString("reload", ConfigBackup.reload);
 		setString("noPermission", ConfigBackup.noPermission);
@@ -318,7 +322,7 @@ public class ConfigManager {
         	inputStr = newBuffer.toString();
 			
 			FileOutputStream fileOut = new FileOutputStream(new File(Main.instance.getDataFolder(), "config.yml"));
-			fileOut.write(inputStr.getBytes("UTF-8"));
+			fileOut.write(inputStr.getBytes(Charset.defaultCharset()));
 	        fileOut.close();
 		} catch (Exception e) {
 			e.printStackTrace();

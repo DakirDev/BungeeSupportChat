@@ -5,7 +5,7 @@
 ###                                           ###
 #################################################
 #Please don't edit this
-configversion: 1.1.2
+configversion: 1.1.3
 
 
 #######################################
@@ -38,6 +38,10 @@ enableQueueNotification: true
 #This is the interval in seconds how often the 
 #plugin inform the supporters of queued players
 queueNotificationInterval: 60
+
+#If this is true the players can tab other players
+#name in the chat across the entire network
+enableTabComplete: true
 
 
 

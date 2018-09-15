@@ -189,8 +189,7 @@ public class Metrics {
         @SuppressWarnings("deprecation")
 		int onlineMode = plugin.getProxy().getConfig().isOnlineMode() ? 1 : 0;
         String bungeecordVersion = plugin.getProxy().getVersion();
-        @SuppressWarnings("deprecation")
-		int managedServers = plugin.getProxy().getServers().size();
+        int managedServers = plugin.getProxy().getServers().size();
 
         // OS/Java specific data
         String javaVersion = System.getProperty("java.version");

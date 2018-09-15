@@ -11,6 +11,7 @@ public class ConfigBackup {
 	public static String chatColor = "&b";
 	public static boolean enableQueueNotification = true;
 	public static int queueNotificationInterval = 60;
+	public static boolean enableTabComplete = true;
 	
 	public static String reload = "Config has been reloaded!";
 	public static String noPermission = "You have no permission for that!";

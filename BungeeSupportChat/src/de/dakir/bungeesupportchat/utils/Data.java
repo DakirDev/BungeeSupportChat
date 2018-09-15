@@ -12,5 +12,6 @@ public class Data {
 	public static boolean enableMySQL;
 	public static boolean enableQueueNotification;
 	public static int queueNotificationInterval;
+	public static boolean enableTabComplete;
 	
 }
