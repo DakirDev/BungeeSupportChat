@@ -328,7 +328,7 @@ public class ConfigManager {
         	inputStr = newBuffer.toString();
 			
 			FileOutputStream fileOut = new FileOutputStream(new File(Main.instance.getDataFolder(), "config.yml"));
-			fileOut.write(inputStr.getBytes(Charset.defaultCharset()));
+			fileOut.write(inputStr.getBytes(Charset.forName("UTF-8")));
 	        fileOut.close();
 		} catch (Exception e) {
 			e.printStackTrace();
