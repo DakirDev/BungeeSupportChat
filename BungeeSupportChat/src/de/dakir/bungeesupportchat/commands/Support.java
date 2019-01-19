@@ -152,7 +152,7 @@ public class Support extends Command{
 					if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.reset")) {
 						if(Data.enableMySQL) {
 							MySQLData.resetSupports();
-							p.sendMessage(new TextComponent(Strings.dataSupportsReset));
+							p.sendMessage(new TextComponent(Strings.prefix + Strings.dataSupportsReset));
 						} else {
 							p.sendMessage(new TextComponent(Strings.prefix + Strings.mysqlNotEnabled));
 						}
