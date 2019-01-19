@@ -73,6 +73,15 @@ public class MySQLData {
 		}
 	}
 	
+	public static void resetSupports(){
+		try {
+			PreparedStatement ps = MySQL.getConnection().prepareStatement("UPDATE Data SET Supports = 0 WHERE 1");
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/////////////////////////////////////////////////////////
 	////////////////////////   ADD   ////////////////////////
 	/////////////////////////////////////////////////////////

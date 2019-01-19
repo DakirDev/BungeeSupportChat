@@ -99,6 +99,7 @@ public class Support extends Command{
 						if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.add")) { p.sendMessage(new TextComponent(Strings.sc_data_add)); }
 						if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.remove")) { p.sendMessage(new TextComponent(Strings.sc_data_remove)); }
 						if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.set")) { p.sendMessage(new TextComponent(Strings.sc_data_set)); }
+						if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.reset")) { p.sendMessage(new TextComponent(Strings.sc_data_reset)); }
 						if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.reload")) { p.sendMessage(new TextComponent(Strings.sc_reload)); }
 						p.sendMessage(new TextComponent(Strings.footer));
 					} else {
@@ -141,6 +142,17 @@ public class Support extends Command{
 								p.sendMessage(new TextComponent(Strings.dataPlayerList_entry.replace("%id%", String.valueOf(id)).replace("%player%", list.get(id)).replace("%number%", String.valueOf(MySQLData.getSupportsByName(list.get(id))))));
 							}
 							p.sendMessage(new TextComponent(Strings.dataPlayerList_footer));
+						} else {
+							p.sendMessage(new TextComponent(Strings.prefix + Strings.mysqlNotEnabled));
+						}
+					} else {
+						p.sendMessage(new TextComponent(Strings.prefix + Strings.noPermission));
+					}
+				} else if(args[0].equalsIgnoreCase("data") && args[1].equalsIgnoreCase("reset")) {
+					if(p.hasPermission("supportchat.*") || p.hasPermission("supportchat.data.*") || p.hasPermission("supportchat.data.reset")) {
+						if(Data.enableMySQL) {
+							MySQLData.resetSupports();
+							p.sendMessage(new TextComponent(Strings.dataSupportsReset));
 						} else {
 							p.sendMessage(new TextComponent(Strings.prefix + Strings.mysqlNotEnabled));
 						}

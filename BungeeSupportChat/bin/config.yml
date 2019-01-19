@@ -5,7 +5,7 @@
 ###                                           ###
 #################################################
 #Please don't edit this
-configversion: 1.1.3
+configversion: 1.1.4
 
 
 #######################################
@@ -101,5 +101,6 @@ sc_data_delete: '&9/sc data delete <player> &8- &fDeletes a player from the data
 sc_data_add: '&9/sc data add <player> <number> &8- &fAdds supports to a player'
 sc_data_remove: '&9/sc data remove <player> <number> &8- &fRemoves supports of a player'
 sc_data_set: '&9/sc data set <player> <number> &8- &fSets the supports of a player'
+sc_data_reset: '&9/sc data reset &8- &fResets the supports'
 sc_reload: '&9/sc reload &8- &fReloads the config'
 footer: '&8&m]&7&m------------------------&8&m[&r &b♦ &8&m]&7&m------------------------&8&m['

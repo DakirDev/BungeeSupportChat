@@ -39,6 +39,7 @@ public class ConfigBackup {
 	public static String openSupportChat_space = "";
 	public static String openSupportChat_hellomessage = "&c%player% &8» &bHello, how can I help you?";
 	public static String mysqlNotEnabled = "The MySQL database is not activated in the config!";
+	public static String dataSupportsReset = "Supports have been reset.";
 	public static String dataPlayerStats = "The player &f%player% &bhas already made &f%number% &bsupport(s).";
 	public static String dataPlayerDeleted = "The player &f%player% &bwas successfully deleted from the database.";
 	public static String dataPlayerSupportsAdded = "Added &f%number% &bsupport(s) to player &f%player%&b.";
@@ -61,6 +62,7 @@ public class ConfigBackup {
 	public static String sc_data_add = "&9/sc data add <player> <number> &8- &fAdds supports to a player";
 	public static String sc_data_remove = "&9/sc data remove <player> <number> &8- &fRemoves supports of a player";
 	public static String sc_data_set = "&9/sc data set <player> <number> &8- &fSets the supports of a player";
+	public static String sc_data_reset = "&9/sc data reset &8- &fResets the supports";
 	public static String sc_reload = "&9/sc reload &8- &fReloads the config";
 	public static String footer = "&8&m]&7&m------------------------&8&m[&r &b♦ &8&m]&7&m------------------------&8&m[";
 	
