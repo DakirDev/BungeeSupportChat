@@ -5,7 +5,7 @@
 ###                                           ###
 #################################################
 #Please don't edit this
-configversion: 1.1.5
+configversion: 1.1.6
 
 
 #######################################
@@ -30,6 +30,11 @@ userColor: '&f'
 
 #The color of the text in the support chat
 chatColor: '&b'
+
+#This is the chat format of the support chat.
+#The %nameColor% variable is replaced by "userColor"
+#or "supporterColor" which are defined in the config.
+chatFormat: '%prefix%%nameColor%%player% &8»%msg%'
 
 #If this is true the plugin will inform the 
 #supporters if players are in queue

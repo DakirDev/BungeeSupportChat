@@ -10,6 +10,7 @@ public class Strings {
 	public static String supporterColor;
 	public static String userColor;
 	public static String chatColor;
+	public static String chatFormat;
 	
 	public static String noPermission;
 	public static String noNumber;

@@ -66,6 +66,7 @@ public class ConfigManager {
             Strings.supporterColor = ChatColor.translateAlternateColorCodes('&', config.getString("supporterColor"));
             Strings.userColor = ChatColor.translateAlternateColorCodes('&', config.getString("userColor"));
             Strings.chatColor = ChatColor.translateAlternateColorCodes('&', config.getString("chatColor"));
+            Strings.chatFormat = ChatColor.translateAlternateColorCodes('&', config.getString("chatFormat"));
             Data.enableQueueNotification = config.getBoolean("enableQueueNotification");
             Data.queueNotificationInterval = config.getInt("queueNotificationInterval");
             Data.enableTabComplete = config.getBoolean("enableTabComplete");
@@ -153,6 +154,7 @@ public class ConfigManager {
 			if(config.contains("supporterColor")) ConfigBackup.supporterColor = config.getString("supporterColor");
 			if(config.contains("userColor")) ConfigBackup.userColor = config.getString("userColor");
 			if(config.contains("chatColor")) ConfigBackup.chatColor = config.getString("chatColor");
+			if(config.contains("chatFormat")) ConfigBackup.chatFormat = config.getString("chatFormat");
 			if(config.contains("enableQueueNotification")) ConfigBackup.enableQueueNotification = config.getBoolean("enableQueueNotification");
 			if(config.contains("queueNotificationInterval")) ConfigBackup.queueNotificationInterval = config.getInt("queueNotificationInterval");
 			if(config.contains("enableTabComplete")) ConfigBackup.enableTabComplete = config.getBoolean("enableTabComplete");
@@ -233,6 +235,7 @@ public class ConfigManager {
 		setString("supporterColor", ConfigBackup.supporterColor);
 		setString("userColor", ConfigBackup.userColor);
 		setString("chatColor", ConfigBackup.chatColor);
+		setString("chatFormat", ConfigBackup.chatFormat);
 		setBoolean("enableQueueNotification", ConfigBackup.enableQueueNotification);
 		setInt("queueNotificationInterval", ConfigBackup.queueNotificationInterval);
 		setBoolean("enableTabComplete", ConfigBackup.enableTabComplete);

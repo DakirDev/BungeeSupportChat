@@ -9,6 +9,7 @@ public class ConfigBackup {
 	public static String supporterColor = "&c";
 	public static String userColor = "&f";
 	public static String chatColor = "&b";
+	public static String chatFormat = "%prefix%%nameColor%%player% &8»%msg%";
 	public static boolean enableQueueNotification = true;
 	public static int queueNotificationInterval = 60;
 	public static boolean enableTabComplete = true;

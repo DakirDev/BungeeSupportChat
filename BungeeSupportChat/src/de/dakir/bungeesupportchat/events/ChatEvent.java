@@ -36,8 +36,8 @@ public class ChatEvent implements Listener{
         		msg = msg + " " + Strings.chatColor + args[i];
         	}
         	
-        	p.sendMessage(new TextComponent(Strings.prefix + namecolor + p.getName() + " §8\u00BB§b" + msg));
-        	HexxAPI.getSupportChatPartner(p).sendMessage(new TextComponent(Strings.prefix + namecolor + p.getName() + " §8\u00BB§b" + msg));
+        	p.sendMessage(new TextComponent(Strings.chatFormat.replace("%prefix%", Strings.prefix).replace("%nameColor%", namecolor).replace("%player%", p.getName()).replace("%msg%", msg)));
+        	HexxAPI.getSupportChatPartner(p).sendMessage(new TextComponent(Strings.chatFormat.replace("%prefix%", Strings.prefix).replace("%nameColor%", namecolor).replace("%player%", p.getName()).replace("%msg%", msg)));
         	e.setCancelled(true);
         }
 	}
