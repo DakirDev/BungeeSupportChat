@@ -29,7 +29,7 @@ public class Main extends Plugin {
         }
 
         @SuppressWarnings("unused")
-        Metrics metrics = new Metrics(Main.instance);
+        Metrics metrics = new Metrics(this, 2369);
 
         System.out.println(Strings.cprefix + "Plugin has been enabled!");
     }
