@@ -1,0 +1,9 @@
+name: BungeeSupportChat
+main: de.dakir.bungeesupportchat.Main
+version: ${project.version}
+author: Dakir
+
+commands:
+  support:
+  sup:
+  sc:
