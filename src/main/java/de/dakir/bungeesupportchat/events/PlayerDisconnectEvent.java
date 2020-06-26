@@ -7,17 +7,17 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-public class PlayerDisconnectEvent implements Listener{
-	
-	@EventHandler
-	public void onQuit(net.md_5.bungee.api.event.PlayerDisconnectEvent e){
-		ProxiedPlayer p = e.getPlayer();
-		if(Data.supports.contains(p.getUniqueId())){
-			Data.supports.remove(p.getUniqueId());
-			HexxAPI.sendSupportMessage(Strings.needNoSupport.replace("%player%", p.getName()));
-		}else if(HexxAPI.isInSupportChat(p)){
-			HexxAPI.closeSupportChat(p);
-		}
-	}
+public class PlayerDisconnectEvent implements Listener {
+
+    @EventHandler
+    public void onQuit(net.md_5.bungee.api.event.PlayerDisconnectEvent e) {
+        ProxiedPlayer p = e.getPlayer();
+        if (Data.supports.contains(p.getUniqueId())) {
+            Data.supports.remove(p.getUniqueId());
+            HexxAPI.sendSupportMessage(Strings.needNoSupport.replace("%player%", p.getName()));
+        } else if (HexxAPI.isInSupportChat(p)) {
+            HexxAPI.closeSupportChat(p);
+        }
+    }
 
 }
