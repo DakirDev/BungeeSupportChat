@@ -44,10 +44,6 @@ enableQueueNotification: true
 #plugin inform the supporters of queued players
 queueNotificationInterval: 60
 
-#If this is true the players can tab other players
-#name in the chat across the entire network
-enableTabComplete: true
-
 
 
 ########################################

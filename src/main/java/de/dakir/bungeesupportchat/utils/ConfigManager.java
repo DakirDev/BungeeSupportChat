@@ -69,7 +69,6 @@ public class ConfigManager {
             Strings.chatFormat = ChatColor.translateAlternateColorCodes('&', config.getString("chatFormat"));
             Data.enableQueueNotification = config.getBoolean("enableQueueNotification");
             Data.queueNotificationInterval = config.getInt("queueNotificationInterval");
-            Data.enableTabComplete = config.getBoolean("enableTabComplete");
 
             Strings.reload = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("reload")));
             Strings.noPermission = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("noPermission")));
@@ -159,8 +158,6 @@ public class ConfigManager {
                 ConfigBackup.enableQueueNotification = config.getBoolean("enableQueueNotification");
             if (config.contains("queueNotificationInterval"))
                 ConfigBackup.queueNotificationInterval = config.getInt("queueNotificationInterval");
-            if (config.contains("enableTabComplete"))
-                ConfigBackup.enableTabComplete = config.getBoolean("enableTabComplete");
 
             if (config.contains("reload")) ConfigBackup.reload = config.getString("reload");
             if (config.contains("noPermission")) ConfigBackup.noPermission = config.getString("noPermission");
@@ -264,7 +261,6 @@ public class ConfigManager {
         setString("chatFormat", ConfigBackup.chatFormat);
         setBoolean("enableQueueNotification", ConfigBackup.enableQueueNotification);
         setInt("queueNotificationInterval", ConfigBackup.queueNotificationInterval);
-        setBoolean("enableTabComplete", ConfigBackup.enableTabComplete);
 
         setString("reload", ConfigBackup.reload);
         setString("noPermission", ConfigBackup.noPermission);
