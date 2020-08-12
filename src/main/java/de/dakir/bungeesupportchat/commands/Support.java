@@ -1,6 +1,9 @@
 package de.dakir.bungeesupportchat.commands;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import de.dakir.bungeesupportchat.PluginManager;
 import de.dakir.bungeesupportchat.utils.ConfigManager;
@@ -13,8 +16,9 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
-public class Support extends Command {
+public class Support extends Command implements TabExecutor {
 
     public Support(String name) {
         super(name);
@@ -313,5 +317,102 @@ public class Support extends Command {
                 sender.sendMessage(new TextComponent(Strings.onlyPlayer));
             }
         }
+    }
+
+    @Override
+    public Iterable<String> onTabComplete(CommandSender sender, String[] args) {
+        ArrayList<String> subcommands = new ArrayList<>();
+        List<String> matches = new ArrayList<>();
+
+        if (args.length == 1) {
+            if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.use") || sender.hasPermission("supportchat.close")) {
+                subcommands.add("close");
+            }
+
+            if (sender.hasPermission("supportchat.*")
+                    || sender.hasPermission("supportchat.data.*")
+                    || sender.hasPermission("supportchat.data.list")
+                    || sender.hasPermission("supportchat.data.stats")
+                    || sender.hasPermission("supportchat.data.delete")
+                    || sender.hasPermission("supportchat.data.add")
+                    || sender.hasPermission("supportchat.data.remove")
+                    || sender.hasPermission("supportchat.data.set")
+                    || sender.hasPermission("supportchat.data.reset")) {
+                subcommands.add("data");
+            }
+
+            if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.use") || sender.hasPermission("supportchat.help")) {
+                subcommands.add("help");
+            }
+
+            if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.use") || sender.hasPermission("supportchat.list")) {
+                subcommands.add("list");
+            }
+
+            if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.use") || sender.hasPermission("supportchat.open")) {
+                subcommands.add("open");
+            }
+
+            if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.reload")) {
+                subcommands.add("reload");
+            }
+
+            matches = subcommands.stream().filter(val -> val.startsWith(args[0])).collect(Collectors.toList());
+
+        } else if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("data")) {
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.add")) {
+                    subcommands.add("add");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.delete")) {
+                    subcommands.add("delete");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.list")) {
+                    subcommands.add("list");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.remove")) {
+                    subcommands.add("remove");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.reset")) {
+                    subcommands.add("reset");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.set")) {
+                    subcommands.add("set");
+                }
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*") || sender.hasPermission("supportchat.data.stats")) {
+                    subcommands.add("stats");
+                }
+                matches = subcommands.stream().filter(val -> val.startsWith(args[1])).collect(Collectors.toList());
+            } else if (args[0].equalsIgnoreCase("open")) {
+                if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.use") || sender.hasPermission("supportchat.open")) {
+                    for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+                        if (player.getName().startsWith(args[1])) {
+                            matches.add(player.getName());
+                        }
+                    }
+                }
+            }
+
+        } else if (args.length == 3) {
+            if (args[0].equalsIgnoreCase("data")) {
+                if (args[1].equalsIgnoreCase("add")
+                        || args[1].equalsIgnoreCase("delete")
+                        || args[1].equalsIgnoreCase("remove")
+                        || args[1].equalsIgnoreCase("set")
+                        || args[1].equalsIgnoreCase("stats")) {
+                    if (sender.hasPermission("supportchat.*") || sender.hasPermission("supportchat.data.*")
+                            || sender.hasPermission("supportchat.data.add") || sender.hasPermission("supportchat.data.delete")
+                            || sender.hasPermission("supportchat.data.remove") || sender.hasPermission("supportchat.data.set")
+                            || sender.hasPermission("supportchat.data.stats")) {
+                        for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+                            if (player.getName().startsWith(args[2])) {
+                                matches.add(player.getName());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return matches;
     }
 }
