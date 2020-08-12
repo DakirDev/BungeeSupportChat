@@ -128,7 +128,7 @@ public class ConfigManager {
             //Updatechecker
             try {
                 String version = Main.instance.getDescription().getVersion();
-                if (!(config.getString("configversion").equalsIgnoreCase(version))) {
+                if (!(config.get("configversion").toString().equalsIgnoreCase(version))) {
                     System.out.println(Strings.cprefix + "Your config file is outdated and will be updated automatically to version " + version);
                     loadConfigBackup();
                     System.out.println(Strings.cprefix + "Config backup has been taken");
