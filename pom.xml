@@ -6,7 +6,7 @@
 
     <groupId>de.dakir</groupId>
     <artifactId>BungeeSupportChat</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
 
     <build>
         <finalName>BungeeSupportChat</finalName>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.2-SNAPSHOT</version>
+            <version>1.16-R0.4-SNAPSHOT</version>
             <type>javadoc</type>
             <scope>provided</scope>
         </dependency>

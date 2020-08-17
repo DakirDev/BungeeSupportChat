@@ -20,8 +20,8 @@ import net.md_5.bungee.api.plugin.TabExecutor;
 
 public class Support extends Command implements TabExecutor {
 
-    public Support(String name) {
-        super(name);
+    public Support(String name, String permission, String... aliases) {
+        super(name, permission, aliases);
     }
 
     @Override

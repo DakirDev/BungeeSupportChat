@@ -1,9 +1,13 @@
 package de.dakir.bungeesupportchat.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConfigBackup {
 
     public static String configversion;
 
+    public static String aliases = "sup,sc";
     public static String prefix = "&8[&9Support&8] &b";
     public static boolean enableMySQL = false;
     public static String supporterColor = "&c";

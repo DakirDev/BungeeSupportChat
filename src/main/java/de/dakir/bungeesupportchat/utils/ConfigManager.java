@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.List;
 
 import de.dakir.bungeesupportchat.Main;
 import net.md_5.bungee.api.ChatColor;
@@ -61,7 +62,7 @@ public class ConfigManager {
         try {
             Configuration config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(Main.instance.getDataFolder(), "config.yml"));
 
-            Strings.prefix = config.getString("prefix");
+            Data.aliases = config.getString("aliases");
             Data.enableMySQL = config.getBoolean("enableMySQL");
             Strings.supporterColor = ChatColor.translateAlternateColorCodes('&', config.getString("supporterColor"));
             Strings.userColor = ChatColor.translateAlternateColorCodes('&', config.getString("userColor"));
@@ -70,6 +71,7 @@ public class ConfigManager {
             Data.enableQueueNotification = config.getBoolean("enableQueueNotification");
             Data.queueNotificationInterval = config.getInt("queueNotificationInterval");
 
+            Strings.prefix = config.getString("prefix");
             Strings.reload = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("reload")));
             Strings.noPermission = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("noPermission")));
             Strings.noNumber = ChatColor.translateAlternateColorCodes('&', HexxAPI.getStringWithColorCodes(config.getString("noNumber")));
@@ -129,11 +131,11 @@ public class ConfigManager {
             try {
                 String version = Main.instance.getDescription().getVersion();
                 if (!(config.get("configversion").toString().equalsIgnoreCase(version))) {
-                    System.out.println(Strings.cprefix + "Your config file is outdated and will be updated automatically to version " + version);
+                    System.out.println(Strings.cprefix + "Your config file is outdated and will be updated automatically to version " + version + "!");
                     loadConfigBackup();
-                    System.out.println(Strings.cprefix + "Config backup has been taken");
+                    System.out.println(Strings.cprefix + "Config backup has been taken.");
                     update();
-                    System.out.println(Strings.cprefix + "Config has been updated");
+                    System.out.println(Strings.cprefix + "Config has been updated.");
                 }
             } catch (NullPointerException e) {
                 System.out.println(Strings.cprefix + "The version number in the plugin.yml file is incorrect!");
@@ -148,6 +150,7 @@ public class ConfigManager {
             Configuration config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(Main.instance.getDataFolder(), "config.yml"));
             ConfigBackup.configversion = Main.instance.getDescription().getVersion();
 
+            if (config.contains("aliases")) ConfigBackup.aliases = config.getString("aliases");
             if (config.contains("prefix")) ConfigBackup.prefix = config.getString("prefix");
             if (config.contains("enableMySQL")) ConfigBackup.enableMySQL = config.getBoolean("enableMySQL");
             if (config.contains("supporterColor")) ConfigBackup.supporterColor = config.getString("supporterColor");
@@ -253,6 +256,7 @@ public class ConfigManager {
 
         setVersion("configversion", ConfigBackup.configversion);
 
+        setString("aliases", ConfigBackup.aliases);
         setString("prefix", ConfigBackup.prefix);
         setBoolean("enableMySQL", ConfigBackup.enableMySQL);
         setString("supporterColor", ConfigBackup.supporterColor);
@@ -405,5 +409,4 @@ public class ConfigManager {
             }
         }
     }
-
 }

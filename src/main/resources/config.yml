@@ -12,6 +12,11 @@ configversion: ${project.version}
 #               General               #
 #######################################
 
+#Here you can set additional aliases for the "/support" command.
+#The different aliases are separated by a comma.
+#For the changes to take effect, the server must be restarted.
+aliases: 'sup,sc'
+
 #This is the prefix that will be displayed
 #in front of all messages
 prefix: '&8[&9Support&8] &b'

@@ -37,9 +37,7 @@ public class PluginManager {
     public static void registerCommands() {
         net.md_5.bungee.api.plugin.PluginManager pm = ProxyServer.getInstance().getPluginManager();
         Plugin pl = Main.instance;
-        pm.registerCommand(pl, new Support("support"));
-        pm.registerCommand(pl, new Support("sup"));
-        pm.registerCommand(pl, new Support("sc"));
+        pm.registerCommand(pl, new Support("support", null, Data.aliases.split(",")));
     }
 
     public static void registerScheduler() {
